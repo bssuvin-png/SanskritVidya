@@ -1,0 +1,523 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Sanskrit Vidya</title>
+
+    <link rel="stylesheet" href="2.css">
+
+</head>
+
+
+<body>
+
+
+<!-- HEADER -->
+
+<header>
+
+    <div class="logo">
+        ??? Sanskrit Vidya
+    </div>
+
+
+    <nav>
+
+        <a href="#home">Home</a>
+
+        <a href="#mantras">Mantras</a>
+
+        <a href="#classes">Online Classes</a>
+
+        <a href="#about">About</a>
+
+        <button onclick="openLogin()">
+            Login
+        </button>
+
+    </nav>
+
+</header>
+
+
+
+<!-- HOME -->
+
+<section id="home" class="home">
+
+
+    <div class="home-text">
+
+        <p class="small-title">
+            ??? LEARN • CHANT • UNDERSTAND
+        </p>
+
+
+        <h1>
+
+            Discover the
+
+            <span>
+                Power of Sanskrit
+            </span>
+
+        </h1>
+
+
+        <p>
+
+            Explore Sanskrit mantras, stotras
+            and sacred verses with notes and audio.
+
+            Learn from your teacher through
+            online Sanskrit classes.
+
+        </p>
+
+
+        <a href="#mantras"
+           class="main-button">
+
+            Explore Mantras
+
+        </a>
+
+
+        <a href="#classes"
+           class="second-button">
+
+            Online Classes
+
+        </a>
+
+    </div>
+
+
+
+    <div class="om">
+
+        ?
+
+    </div>
+
+
+</section>
+
+
+
+<!-- MANTRA LIBRARY -->
+
+<section id="mantras"
+         class="section">
+
+
+    <h2>
+        ??? Mantra Library
+    </h2>
+
+
+    <p>
+        Explore Sanskrit mantras,
+        stotras and slokas.
+    </p>
+
+
+
+    <!-- SEARCH -->
+
+    <input
+
+        type="text"
+
+        id="search"
+
+        placeholder="?? Search mantra..."
+
+    >
+
+
+
+    <!-- CATEGORY -->
+
+    <div class="categories">
+
+
+        <button
+            onclick="filterMantras('all')">
+
+            All
+
+        </button>
+
+
+        <button
+            onclick="filterMantras('mantra')">
+
+            Mantras
+
+        </button>
+
+
+        <button
+            onclick="filterMantras('stotra')">
+
+            Stotras
+
+        </button>
+
+
+        <button
+            onclick="filterMantras('sloka')">
+
+            Slokas
+
+        </button>
+
+
+    </div>
+
+
+
+    <!-- CARDS -->
+
+    <div class="mantra-container">
+
+
+        <div
+
+            class="mantra-card"
+
+            data-category="mantra"
+
+            onclick="showMantra('ganapati')"
+
+        >
+
+            <div class="icon">
+                ???
+            </div>
+
+
+            <h3>
+                Ganapati Mantra
+            </h3>
+
+
+            <p>
+                Mantra
+            </p>
+
+        </div>
+
+
+
+        <div
+
+            class="mantra-card"
+
+            data-category="stotra"
+
+            onclick="showMantra('hanuman')"
+
+        >
+
+            <div class="icon">
+                ??
+            </div>
+
+
+            <h3>
+                Hanuman Chalisa
+            </h3>
+
+
+            <p>
+                Stotra
+            </p>
+
+        </div>
+
+
+
+        <div
+
+            class="mantra-card"
+
+            data-category="stotra"
+
+            onclick="showMantra('vishnu')"
+
+        >
+
+            <div class="icon">
+                ??
+            </div>
+
+
+            <h3>
+                Vishnu Sahasranama
+            </h3>
+
+
+            <p>
+                Stotra
+            </p>
+
+        </div>
+
+
+
+        <div
+
+            class="mantra-card"
+
+            data-category="sloka"
+
+            onclick="showMantra('guru')"
+
+        >
+
+            <div class="icon">
+                ??
+            </div>
+
+
+            <h3>
+                Guru Sloka
+            </h3>
+
+
+            <p>
+                Sloka
+            </p>
+
+        </div>
+
+
+    </div>
+
+
+
+    <!-- MANTRA DETAILS -->
+
+    <div id="mantra-details"
+         class="details">
+
+
+        <button
+            onclick="closeMantra()">
+
+            ? Close
+
+        </button>
+
+
+        <div id="mantra-content"></div>
+
+
+    </div>
+
+
+</section>
+
+
+
+<!-- ONLINE CLASSES -->
+
+<section id="classes"
+         class="classes">
+
+
+    <h2>
+
+        ????? Online Sanskrit Classes
+
+    </h2>
+
+
+    <p>
+
+        Learn Sanskrit through live
+        online classes.
+
+    </p>
+
+
+
+    <div class="free-box">
+
+
+        <h3>
+
+            ?? First 2 Classes FREE
+
+        </h3>
+
+
+        <p>
+
+            New students can attend
+            their first two online
+            classes free.
+
+        </p>
+
+
+        <button
+            onclick="openLogin()">
+
+            Join Classes
+
+        </button>
+
+
+    </div>
+
+
+</section>
+
+
+
+<!-- ABOUT -->
+
+<section id="about"
+         class="section">
+
+
+    <h2>
+
+        About Sanskrit Vidya
+
+    </h2>
+
+
+    <p class="about-text">
+
+        Sanskrit Vidya is a learning
+        platform for exploring Sanskrit
+        mantras, stotras and traditional
+        knowledge.
+
+        <br><br>
+
+        Students can read Sanskrit text,
+        listen to audio, study notes and
+        join online classes.
+
+    </p>
+
+
+</section>
+
+
+
+<!-- LOGIN WINDOW -->
+
+<div id="login-box"
+     class="login-box">
+
+
+    <div class="login-content">
+
+
+        <button
+            class="close-login"
+            onclick="closeLogin()">
+
+            ?
+
+        </button>
+
+
+        <h2>
+            ?? Login
+        </h2>
+
+
+        <p>
+            Login to Sanskrit Vidya
+        </p>
+
+
+        <input
+
+            type="email"
+
+            id="email"
+
+            placeholder="Enter Gmail"
+
+        >
+
+
+        <input
+
+            type="password"
+
+            id="password"
+
+            placeholder="Enter Password"
+
+        >
+
+
+        <button
+            onclick="login()">
+
+            Login
+
+        </button>
+
+
+        <p id="login-message"></p>
+
+
+    </div>
+
+
+</div>
+
+
+
+<!-- FOOTER -->
+
+<footer>
+
+
+    <h3>
+        ??? Sanskrit Vidya
+    </h3>
+
+
+    <p>
+
+        Learn Sanskrit •
+        Explore Mantras •
+        Understand Tradition
+
+    </p>
+
+
+    <p>
+
+        © 2026 Sanskrit Vidya
+
+    </p>
+
+
+</footer>
+
+
+
+<script src="3.js"></script>
+
+
+</body>
+
+</html>
