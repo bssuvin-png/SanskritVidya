@@ -1,122 +1,239 @@
+/* =====================================================
+   SANSKRIT VIDYA
+   MAIN CSS
+===================================================== */
+
+
 * {
-    box-sizing: border-box;
     margin: 0;
     padding: 0;
+    box-sizing: border-box;
 }
+
+
+/* =====================================================
+   BODY
+===================================================== */
 
 body {
-    font-family: Arial, sans-serif;
-    background: #f7f4ed;
-    color: #333;
+
+    font-family: Georgia, "Times New Roman", serif;
+
+    color: white;
+
+    min-height: 100vh;
+
+
+    /* =================================================
+       🖤 SUVIN — PASTE YOUR BACKGROUND IMAGE LINK HERE
+       
+       Replace ONLY the text inside url("...")
+       
+       Example:
+       url("https://example.com/myimage.jpg")
+
+       ================================================= */
+
+    background-image:
+
+        linear-gradient(
+            rgba(0, 0, 0, 0.60),
+            rgba(0, 0, 0, 0.75)
+        ),
+
+        url("SUVIN — PASTE YOUR IMAGE LINK HERE");
+
+
+    background-size: cover;
+
+    background-position: center;
+
+    background-attachment: fixed;
+
+    background-repeat: no-repeat;
+
 }
 
 
-/* HEADER */
+/* =====================================================
+   HEADER
+===================================================== */
 
 header {
-    background: #6b3f1d;
-    color: white;
+
+    background: rgba(0, 0, 0, 0.75);
+
+    border-bottom: 1px solid rgba(255, 215, 0, 0.4);
+
     padding: 15px 25px;
 
     display: flex;
+
     justify-content: space-between;
+
     align-items: center;
 
     flex-wrap: wrap;
+
 }
+
 
 .logo {
-    font-size: 25px;
+
+    font-size: 26px;
+
     font-weight: bold;
+
+    color: #ffd86b;
+
 }
+
 
 nav {
+
     display: flex;
-    gap: 8px;
+
+    gap: 5px;
+
     flex-wrap: wrap;
+
 }
+
 
 nav button {
+
     background: transparent;
+
     border: none;
+
     color: white;
+
+    padding: 10px 14px;
+
     cursor: pointer;
-    padding: 10px;
+
     font-size: 15px;
+
 }
+
 
 nav button:hover {
-    background: #8b5a2b;
-    border-radius: 6px;
+
+    color: #ffd86b;
+
 }
 
 
-/* PAGES */
+/* =====================================================
+   PAGE
+===================================================== */
 
 .page {
-    padding: 35px;
-    min-height: 70vh;
+
+    min-height: 75vh;
+
+    padding: 40px 25px;
+
 }
+
 
 .hidden {
+
     display: none;
+
 }
 
 
-/* HERO */
+/* =====================================================
+   HERO
+===================================================== */
 
 .hero {
-    text-align: center;
-    padding: 80px 20px;
 
-    background: #ead9bd;
+    text-align: center;
+
+    padding: 100px 20px;
+
 }
+
 
 .hero h1 {
-    font-size: 45px;
+
+    font-size: 48px;
+
+    color: #ffd86b;
+
     margin-bottom: 15px;
+
 }
+
+
+.hero h2 {
+
+    font-size: 35px;
+
+    margin-bottom: 15px;
+
+}
+
 
 .hero p {
-    font-size: 19px;
-    margin-bottom: 25px;
+
+    font-size: 20px;
+
+    margin-bottom: 30px;
+
 }
 
 
-/* BUTTON */
+/* =====================================================
+   BUTTON
+===================================================== */
 
 .main-btn {
-    background: #6b3f1d;
+
+    background: #9b6b20;
+
     color: white;
 
-    border: none;
+    border: 1px solid #ffd86b;
+
+    padding: 12px 22px;
+
     border-radius: 7px;
 
-    padding: 12px 20px;
-
     cursor: pointer;
+
     font-size: 16px;
+
 }
+
 
 .main-btn:hover {
-    background: #8b5a2b;
+
+    background: #c18a2d;
+
 }
 
 
-/* CARDS */
+/* =====================================================
+   CARDS
+===================================================== */
 
 .cards {
+
     display: flex;
-    gap: 20px;
+
     justify-content: center;
 
-    padding: 40px 10px;
+    gap: 20px;
 
     flex-wrap: wrap;
+
 }
 
+
 .card {
-    background: white;
 
     width: 280px;
 
@@ -124,159 +241,275 @@ nav button:hover {
 
     border-radius: 12px;
 
-    box-shadow: 0 3px 10px #ccc;
+    background: rgba(0, 0, 0, 0.65);
+
+    border: 1px solid rgba(255, 215, 0, 0.4);
+
+    box-shadow: 0 5px 20px rgba(0,0,0,0.5);
+
 }
+
 
 .card h2 {
+
+    color: #ffd86b;
+
     margin-bottom: 12px;
+
 }
 
 
-/* SEARCH */
+/* =====================================================
+   SEARCH
+===================================================== */
 
 #searchMantra {
+
     width: 100%;
+
     max-width: 600px;
 
     padding: 13px;
 
     margin: 20px 0;
 
-    border: 1px solid #aaa;
     border-radius: 7px;
+
+    border: none;
+
 }
 
 
-/* MANTRA CARD */
+/* =====================================================
+   MANTRA CARD
+===================================================== */
 
 .mantra-card {
-    background: white;
 
-    margin: 15px 0;
+    max-width: 800px;
 
-    padding: 20px;
-
-    border-radius: 10px;
-
-    box-shadow: 0 2px 8px #ccc;
-}
-
-.mantra-card h2 {
-    margin-bottom: 10px;
-}
-
-.mantra-card button {
-    margin-top: 12px;
-}
-
-
-/* MANTRA DETAILS */
-
-.mantra-text {
-    background: white;
+    margin: 15px auto;
 
     padding: 25px;
 
-    margin-top: 20px;
+    background: rgba(0, 0, 0, 0.70);
 
-    border-radius: 10px;
+    border: 1px solid rgba(255, 215, 0, 0.4);
+
+    border-radius: 12px;
+
+}
+
+
+.mantra-card h2 {
+
+    color: #ffd86b;
+
+    margin-bottom: 12px;
+
+}
+
+
+.mantra-card p {
 
     white-space: pre-line;
 
-    line-height: 2;
-}
+    line-height: 1.8;
 
-.notes {
-    background: #ead9bd;
-
-    padding: 20px;
-
-    margin-top: 20px;
-
-    border-radius: 10px;
 }
 
 
-/* CLASS */
+/* =====================================================
+   DETAILS
+===================================================== */
 
-.class-box {
-    background: white;
+#detailsContent {
 
-    padding: 30px;
-
-    max-width: 600px;
-
-    border-radius: 12px;
-
-    box-shadow: 0 3px 10px #ccc;
-
-    margin-top: 20px;
-}
-
-.class-box p {
-    margin: 15px 0;
-}
-
-
-/* LOGIN */
-
-.login-box {
-    background: white;
-
-    max-width: 400px;
+    max-width: 850px;
 
     margin: 30px auto;
 
+}
+
+
+.mantra-text {
+
+    background: rgba(0,0,0,0.75);
+
     padding: 30px;
 
     border-radius: 12px;
 
-    box-shadow: 0 3px 10px #ccc;
+    margin-top: 20px;
+
+    font-size: 23px;
+
+    line-height: 2;
+
+    white-space: pre-line;
+
 }
 
-.login-box h1 {
-    margin-bottom: 20px;
+
+.notes {
+
+    background: rgba(120, 75, 20, 0.65);
+
+    padding: 25px;
+
+    border-radius: 12px;
+
+    margin-top: 20px;
+
 }
+
+
+.notes h2 {
+
+    color: #ffd86b;
+
+    margin-bottom: 10px;
+
+}
+
+
+audio {
+
+    width: 100%;
+
+    margin-top: 15px;
+
+}
+
+
+/* =====================================================
+   CLASSES
+===================================================== */
+
+.class-card {
+
+    max-width: 700px;
+
+    margin: 20px auto;
+
+    padding: 25px;
+
+    background: rgba(0,0,0,0.70);
+
+    border: 1px solid rgba(255,215,0,0.4);
+
+    border-radius: 12px;
+
+}
+
+
+.class-card h2 {
+
+    color: #ffd86b;
+
+    margin-bottom: 10px;
+
+}
+
+
+.class-card a {
+
+    color: #ffd86b;
+
+}
+
+
+/* =====================================================
+   LOGIN
+===================================================== */
+
+.login-box {
+
+    max-width: 400px;
+
+    margin: 50px auto;
+
+    padding: 30px;
+
+    background: rgba(0,0,0,0.80);
+
+    border: 1px solid rgba(255,215,0,0.4);
+
+    border-radius: 12px;
+
+}
+
+
+.login-box h1 {
+
+    color: #ffd86b;
+
+    margin-bottom: 20px;
+
+}
+
 
 input,
 textarea {
+
     width: 100%;
 
-    padding: 12px;
+    padding: 13px;
 
     margin: 8px 0;
 
-    border: 1px solid #aaa;
-
     border-radius: 7px;
 
+    border: 1px solid #aaa;
+
     font-size: 15px;
+
 }
+
 
 textarea {
-    min-height: 100px;
+
+    min-height: 120px;
+
 }
 
 
-/* ADMIN */
+/* =====================================================
+   ADMIN
+===================================================== */
 
 .admin-header {
-    background: #6b3f1d;
 
-    color: white;
+    max-width: 1000px;
+
+    margin: auto;
 
     padding: 20px;
 
-    border-radius: 10px;
+    background: rgba(0,0,0,0.80);
+
+    border: 1px solid rgba(255,215,0,0.4);
+
+    border-radius: 12px;
 
     display: flex;
 
     justify-content: space-between;
 
     align-items: center;
+
 }
 
+
+.admin-header h1 {
+
+    color: #ffd86b;
+
+}
+
+
 .admin-header button {
+
     padding: 10px 15px;
 
     border: none;
@@ -284,32 +517,48 @@ textarea {
     border-radius: 6px;
 
     cursor: pointer;
+
 }
 
+
 .admin-box {
-    background: white;
+
+    max-width: 1000px;
+
+    margin: 20px auto;
 
     padding: 25px;
 
-    margin-top: 20px;
+    background: rgba(0,0,0,0.80);
+
+    border: 1px solid rgba(255,215,0,0.3);
 
     border-radius: 12px;
 
-    box-shadow: 0 2px 8px #ccc;
 }
+
 
 .admin-box h2 {
+
+    color: #ffd86b;
+
     margin-bottom: 15px;
+
 }
+
 
 .admin-item {
-    border-bottom: 1px solid #ddd;
 
-    padding: 12px 0;
+    padding: 15px 0;
+
+    border-bottom: 1px solid rgba(255,255,255,0.2);
+
 }
 
+
 .delete-btn {
-    background: #b3261e;
+
+    background: #9e2929;
 
     color: white;
 
@@ -320,37 +569,76 @@ textarea {
     border-radius: 5px;
 
     cursor: pointer;
+
+    float: right;
+
 }
 
 
-/* FOOTER */
+/* =====================================================
+   FOOTER
+===================================================== */
 
 footer {
-    background: #6b3f1d;
-
-    color: white;
 
     text-align: center;
 
-    padding: 20px;
+    padding: 25px;
+
+    background: rgba(0,0,0,0.80);
+
+    border-top: 1px solid rgba(255,215,0,0.3);
+
 }
 
 
-/* MOBILE */
+/* =====================================================
+   MOBILE
+===================================================== */
 
 @media (max-width: 700px) {
 
     header {
+
         flex-direction: column;
+
         gap: 15px;
+
     }
+
+
+    .hero {
+
+        padding: 60px 15px;
+
+    }
+
 
     .hero h1 {
-        font-size: 32px;
+
+        font-size: 35px;
+
     }
 
+
+    .hero h2 {
+
+        font-size: 27px;
+
+    }
+
+
     .page {
-        padding: 20px;
+
+        padding: 25px 15px;
+
+    }
+
+
+    .card {
+
+        width: 100%;
+
     }
 
 }
