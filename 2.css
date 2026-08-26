@@ -22,18 +22,7 @@ body {
     color: white;
 
     min-height: 100vh;
-
-
-    /* =================================================
-       🖤 SUVIN — PASTE YOUR BACKGROUND IMAGE LINK HERE
-       
-       Replace ONLY the text inside url("...")
-       
-       Example:
-       url("https://example.com/myimage.jpg")
-
-       ================================================= */
-
+url("C:\Users\COL27\Downloads\background.jpg");
     background-image:
 
         linear-gradient(
