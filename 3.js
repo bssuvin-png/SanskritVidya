@@ -1,148 +1,281 @@
-// ==============================
-// MANTRA DATA
-// ==============================
+/* =========================================
+   SANSKRIT VIDYA JAVASCRIPT
+========================================= */
 
-const mantras = {
 
-    ganapati: {
-        title: "??? Ganapati Mantra",
-        type: "Mantra",
-        text: "? ?? ?????? ???",
-        notes: "Your teacher can add the meaning and explanation here."
-    },
+/* =========================================
+   ADMIN LOGIN
+========================================= */
 
-    hanuman: {
-        title: "?? Hanuman Chalisa",
-        type: "Stotra",
-        text: "Hanuman Chalisa",
-        notes: "Your teacher can add the notes and explanation here."
-    },
+const ADMIN_EMAIL = "teacher@gmail.com";
+const ADMIN_PASSWORD = "123456";
 
-    vishnu: {
-        title: "?? Vishnu Sahasranama",
-        type: "Stotra",
-        text: "Vishnu Sahasranama",
-        notes: "Your teacher can add the notes and explanation here."
-    },
 
-    guru: {
-        title: "?? Guru Sloka",
-        type: "Sloka",
-        text: "Guru Sloka",
-        notes: "Your teacher can add the notes and explanation here."
+function adminLogin() {
+
+    let email = document.getElementById("adminEmail").value;
+
+    let password =
+        document.getElementById("adminPassword").value;
+
+    let message =
+        document.getElementById("loginMessage");
+
+
+    if (
+        email === ADMIN_EMAIL &&
+        password === ADMIN_PASSWORD
+    ) {
+
+        localStorage.setItem("adminLoggedIn", "yes");
+
+        message.innerHTML =
+            "Login successful!";
+
+        showPage("admin");
+
+        loadAdmin();
+
+    } else {
+
+        message.innerHTML =
+            "❌ Gmail or password is incorrect.";
+
     }
 
-};
+}
 
 
-// ==============================
-// SHOW MANTRA
-// ==============================
+/* =========================================
+   LOGOUT
+========================================= */
 
-function showMantra(name) {
+function logout() {
 
-    const mantra = mantras[name];
+    localStorage.removeItem("adminLoggedIn");
 
-    const details = document.getElementById("mantra-details");
+    showPage("home");
 
-    const content = document.getElementById("mantra-content");
+}
+
+
+/* =========================================
+   PAGE NAVIGATION
+========================================= */
+
+function showPage(page) {
+
+    let pages =
+        document.querySelectorAll(".page");
+
+    pages.forEach(function(p) {
+
+        p.classList.add("hidden");
+
+    });
+
+
+    document
+        .getElementById(page)
+        .classList.remove("hidden");
+
+
+    if (page === "mantras") {
+
+        loadMantras();
+
+    }
+
+
+    if (page === "admin") {
+
+        loadAdmin();
+
+    }
+
+}
+
+
+/* =========================================
+   DEFAULT MANTRAS
+========================================= */
+
+let mantras =
+    JSON.parse(localStorage.getItem("mantras")) || [
+
+    {
+        name: "Ganapati Mantra",
+
+        text:
+`ॐ गं गणपतये नमः`,
+
+        meaning:
+        "A mantra traditionally associated with Lord Ganesha.",
+
+        audio: ""
+    },
+
+    {
+        name: "Gayatri Mantra",
+
+        text:
+`ॐ भूर्भुवः स्वः
+तत्सवितुर्वरेण्यं
+भर्गो देवस्य धीमहि
+धियो यो नः प्रचोदयात्`,
+
+        meaning:
+        "A traditional Vedic prayer.",
+
+        audio: ""
+    }
+
+];
+
+
+/* =========================================
+   SAVE MANTRAS
+========================================= */
+
+function saveMantras() {
+
+    localStorage.setItem(
+        "mantras",
+        JSON.stringify(mantras)
+    );
+
+}
+
+
+/* =========================================
+   SHOW MANTRAS
+========================================= */
+
+function loadMantras() {
+
+    let list =
+        document.getElementById("mantraList");
+
+    list.innerHTML = "";
+
+
+    mantras.forEach(function(mantra, index) {
+
+        let card =
+            document.createElement("div");
+
+        card.className = "mantra-card";
+
+
+        card.innerHTML = `
+
+            <h2>${mantra.name}</h2>
+
+            <p>${mantra.text.substring(0, 100)}</p>
+
+            <button
+                class="main-btn"
+                onclick="openMantra(${index})">
+                Open Mantra
+            </button>
+
+        `;
+
+
+        list.appendChild(card);
+
+    });
+
+}
+
+
+/* =========================================
+   OPEN MANTRA
+========================================= */
+
+function openMantra(index) {
+
+    let mantra = mantras[index];
+
+
+    let content =
+        document.getElementById("detailsContent");
+
+
+    let audioHTML = "";
+
+
+    if (mantra.audio) {
+
+        audioHTML = `
+
+            <h3>🔊 Listen</h3>
+
+            <audio controls>
+                <source src="${mantra.audio}">
+            </audio>
+
+        `;
+
+    }
+
 
     content.innerHTML = `
 
-        <h1>${mantra.title}</h1>
+        <h1>${mantra.name}</h1>
 
-        <h2>?? Sanskrit</h2>
+        <div class="mantra-text">
 
-        <div class="sanskrit">
             ${mantra.text}
+
         </div>
 
-        <h2>?? Notes & Meaning</h2>
+        <div class="notes">
 
-        <p>
-            ${mantra.notes}
-        </p>
+            <h2>📝 Notes / Meaning</h2>
 
-        <h2>?? Audio</h2>
+            <p>
+                ${mantra.meaning}
+            </p>
 
-        <p>
-            Audio will be added by the teacher.
-        </p>
+        </div>
+
+        <br>
+
+        ${audioHTML}
 
     `;
 
-    details.style.display = "block";
 
-    details.scrollIntoView({
-        behavior: "smooth"
-    });
-}
-
-
-// ==============================
-// CLOSE MANTRA
-// ==============================
-
-function closeMantra() {
-
-    document.getElementById("mantra-details").style.display = "none";
+    showPage("mantraDetails");
 
 }
 
 
-// ==============================
-// SEARCH
-// ==============================
+/* =========================================
+   SEARCH
+========================================= */
 
-const search = document.getElementById("search");
+function searchMantras() {
 
-if (search) {
-
-    search.addEventListener("keyup", function () {
-
-        const searchText =
-            search.value.toLowerCase();
-
-        const cards =
-            document.querySelectorAll(".mantra-card");
-
-        cards.forEach(function (card) {
-
-            const name =
-                card.innerText.toLowerCase();
-
-            if (name.includes(searchText)) {
-
-                card.style.display = "block";
-
-            } else {
-
-                card.style.display = "none";
-
-            }
-
-        });
-
-    });
-
-}
+    let search =
+        document
+        .getElementById("searchMantra")
+        .value
+        .toLowerCase();
 
 
-// ==============================
-// CATEGORY FILTER
-// ==============================
-
-function filterMantras(category) {
-
-    const cards =
+    let cards =
         document.querySelectorAll(".mantra-card");
 
-    cards.forEach(function (card) {
 
-        if (
-            category === "all" ||
-            card.dataset.category === category
-        ) {
+    cards.forEach(function(card) {
+
+        let text =
+            card.innerText.toLowerCase();
+
+
+        if (text.includes(search)) {
 
             card.style.display = "block";
 
@@ -157,71 +290,315 @@ function filterMantras(category) {
 }
 
 
-// ==============================
-// LOGIN WINDOW
-// ==============================
+/* =========================================
+   ADD MANTRA
+========================================= */
 
-function openLogin() {
+function addMantra() {
 
-    document.getElementById("login-box").style.display = "flex";
+    let name =
+        document.getElementById("newMantraName").value;
 
-}
+    let text =
+        document.getElementById("newMantraText").value;
 
-
-function closeLogin() {
-
-    document.getElementById("login-box").style.display = "none";
-
-}
+    let meaning =
+        document.getElementById("newMantraMeaning").value;
 
 
-// ==============================
-// TEMPORARY LOGIN
-// ==============================
+    if (
+        name === "" ||
+        text === ""
+    ) {
 
-function login() {
-
-    const email =
-        document.getElementById("email").value;
-
-    const password =
-        document.getElementById("password").value;
-
-    const message =
-        document.getElementById("login-message");
-
-
-    if (email === "" || password === "") {
-
-        message.innerText =
-            "Please enter Gmail and password.";
+        alert("Please enter mantra name and text.");
 
         return;
 
     }
 
 
-    /*
-       TEMPORARY TEST LOGIN
+    let audioFile =
+        document.getElementById("mantraAudio").files[0];
 
-       This is NOT secure.
-       We will replace this with
-       real authentication later.
+
+    let audioURL = "";
+
+
+    /*
+       For the simple demo, the audio file is
+       converted to a local browser URL.
     */
 
+    if (audioFile) {
+
+        audioURL =
+            URL.createObjectURL(audioFile);
+
+    }
+
+
+    mantras.push({
+
+        name: name,
+
+        text: text,
+
+        meaning: meaning,
+
+        audio: audioURL
+
+    });
+
+
+    saveMantras();
+
+
+    alert("Mantra added successfully!");
+
+
+    document.getElementById("newMantraName").value = "";
+
+    document.getElementById("newMantraText").value = "";
+
+    document.getElementById("newMantraMeaning").value = "";
+
+    document.getElementById("mantraAudio").value = "";
+
+
+    loadAdmin();
+
+}
+
+
+/* =========================================
+   DELETE MANTRA
+========================================= */
+
+function deleteMantra(index) {
+
     if (
-        email === "teacher@gmail.com" &&
-        password === "123456"
+        confirm("Delete this mantra?")
     ) {
 
-        message.innerText =
-            "Teacher login successful!";
+        mantras.splice(index, 1);
 
-    } else {
+        saveMantras();
 
-        message.innerText =
-            "Gmail or password is incorrect.";
+        loadAdmin();
 
     }
 
 }
+
+
+/* =========================================
+   ONLINE CLASSES
+========================================= */
+
+let classes =
+    JSON.parse(localStorage.getItem("classes")) || [];
+
+
+function saveClasses() {
+
+    localStorage.setItem(
+        "classes",
+        JSON.stringify(classes)
+    );
+
+}
+
+
+/* =========================================
+   ADD CLASS
+========================================= */
+
+function addClass() {
+
+    let title =
+        document.getElementById("classTitle").value;
+
+    let date =
+        document.getElementById("classDate").value;
+
+    let link =
+        document.getElementById("classLink").value;
+
+
+    if (
+        title === "" ||
+        date === "" ||
+        link === ""
+    ) {
+
+        alert("Please fill all class details.");
+
+        return;
+
+    }
+
+
+    classes.push({
+
+        title: title,
+
+        date: date,
+
+        link: link
+
+    });
+
+
+    saveClasses();
+
+
+    alert("Class added successfully!");
+
+
+    document.getElementById("classTitle").value = "";
+
+    document.getElementById("classDate").value = "";
+
+    document.getElementById("classLink").value = "";
+
+
+    loadAdmin();
+
+}
+
+
+/* =========================================
+   ADMIN DASHBOARD
+========================================= */
+
+function loadAdmin() {
+
+    let mantraList =
+        document.getElementById("adminMantraList");
+
+
+    mantraList.innerHTML = "";
+
+
+    mantras.forEach(function(mantra, index) {
+
+        mantraList.innerHTML += `
+
+            <div class="admin-item">
+
+                <b>${mantra.name}</b>
+
+                <button
+                    class="delete-btn"
+                    onclick="deleteMantra(${index})">
+                    Delete
+                </button>
+
+            </div>
+
+        `;
+
+    });
+
+
+    let classList =
+        document.getElementById("adminClassList");
+
+
+    classList.innerHTML = "";
+
+
+    classes.forEach(function(classItem, index) {
+
+        classList.innerHTML += `
+
+            <div class="admin-item">
+
+                <b>${classItem.title}</b>
+
+                <br>
+
+                Date:
+                ${classItem.date}
+
+                <br>
+
+                <a
+                    href="${classItem.link}"
+                    target="_blank">
+                    Open Class
+                </a>
+
+                <br><br>
+
+                <button
+                    class="delete-btn"
+                    onclick="deleteClass(${index})">
+                    Delete
+                </button>
+
+            </div>
+
+        `;
+
+    });
+
+}
+
+
+/* =========================================
+   DELETE CLASS
+========================================= */
+
+function deleteClass(index) {
+
+    if (
+        confirm("Delete this class?")
+    ) {
+
+        classes.splice(index, 1);
+
+        saveClasses();
+
+        loadAdmin();
+
+    }
+
+}
+
+
+/* =========================================
+   STUDENT LOGIN DEMO
+========================================= */
+
+function studentLogin() {
+
+    let email =
+        document.getElementById("studentEmail").value;
+
+    let message =
+        document.getElementById("studentMessage");
+
+
+    if (email === "") {
+
+        message.innerHTML =
+            "Please enter your Gmail.";
+
+        return;
+
+    }
+
+
+    message.innerHTML =
+        "Login successful. You can join the available class.";
+
+}
+
+
+/* =========================================
+   START WEBSITE
+========================================= */
+
+showPage("home");
