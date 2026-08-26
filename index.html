@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -11,31 +12,34 @@
 
 <body>
 
-<!-- ================= HEADER ================= -->
-
 <header>
-    <div class="logo">🕉️ Sanskrit Vidya</div>
+
+    <div class="logo">
+        🕉️ Sanskrit Vidya
+    </div>
 
     <nav>
         <button onclick="showPage('home')">Home</button>
         <button onclick="showPage('mantras')">Mantras</button>
-        <button onclick="showPage('classes')">Online Classes</button>
+        <button onclick="showPage('classes')">Classes</button>
         <button onclick="showPage('login')">Teacher Login</button>
     </nav>
+
 </header>
 
 
-<!-- ================= HOME ================= -->
+<!-- HOME -->
 
 <section id="home" class="page">
 
     <div class="hero">
 
-        <h1>Learn Sanskrit Mantras</h1>
+        <h1>॥ संस्कृत विद्या ॥</h1>
+
+        <h2>Sanskrit Vidya</h2>
 
         <p>
-            Learn sacred Sanskrit mantras with text, meaning,
-            notes and audio.
+            Learn Sanskrit Mantras, Stotras and traditional knowledge.
         </p>
 
         <button class="main-btn" onclick="showPage('mantras')">
@@ -48,24 +52,38 @@
     <div class="cards">
 
         <div class="card">
-            <h2>📿 Sanskrit Mantras</h2>
+
+            <h2>📿 Mantras</h2>
+
             <p>
-                Explore different Sanskrit mantras and stotras.
+                Learn traditional Sanskrit mantras
+                with meaning and explanation.
             </p>
+
         </div>
 
+
         <div class="card">
+
             <h2>🔊 Audio</h2>
+
             <p>
-                Listen to mantra audio provided by the teacher.
+                Listen to mantra pronunciation
+                and practice.
             </p>
+
         </div>
 
+
         <div class="card">
-            <h2>🎓 Online Classes</h2>
+
+            <h2>🎓 Classes</h2>
+
             <p>
-                Join live Sanskrit classes online.
+                Join Sanskrit classes and learn
+                step by step.
             </p>
+
         </div>
 
     </div>
@@ -73,15 +91,15 @@
 </section>
 
 
-<!-- ================= MANTRAS ================= -->
+<!-- MANTRAS -->
 
 <section id="mantras" class="page hidden">
 
     <h1>📿 Sanskrit Mantras</h1>
 
     <input
-        type="text"
         id="searchMantra"
+        type="text"
         placeholder="Search mantra..."
         onkeyup="searchMantras()"
     >
@@ -91,7 +109,7 @@
 </section>
 
 
-<!-- ================= MANTRA DETAILS ================= -->
+<!-- MANTRA DETAILS -->
 
 <section id="mantraDetails" class="page hidden">
 
@@ -104,65 +122,18 @@
 </section>
 
 
-<!-- ================= ONLINE CLASSES ================= -->
+<!-- CLASSES -->
 
 <section id="classes" class="page hidden">
 
     <h1>🎓 Online Sanskrit Classes</h1>
 
-    <div class="class-box">
-
-        <h2>Learn Sanskrit Online</h2>
-
-        <p>
-            Join our live online Sanskrit classes.
-        </p>
-
-        <p>
-            <b>First 2 classes are free.</b>
-        </p>
-
-        <button class="main-btn" onclick="showPage('loginStudent')">
-            Join Class
-        </button>
-
-    </div>
+    <div id="classList"></div>
 
 </section>
 
 
-<!-- ================= STUDENT LOGIN ================= -->
-
-<section id="loginStudent" class="page hidden">
-
-    <div class="login-box">
-
-        <h1>Student Login</h1>
-
-        <input
-            type="email"
-            id="studentEmail"
-            placeholder="Enter Gmail"
-        >
-
-        <input
-            type="password"
-            id="studentPassword"
-            placeholder="Password"
-        >
-
-        <button class="main-btn" onclick="studentLogin()">
-            Login
-        </button>
-
-        <p id="studentMessage"></p>
-
-    </div>
-
-</section>
-
-
-<!-- ================= TEACHER LOGIN ================= -->
+<!-- TEACHER LOGIN -->
 
 <section id="login" class="page hidden">
 
@@ -182,8 +153,12 @@
             placeholder="Password"
         >
 
-        <button class="main-btn" onclick="adminLogin()">
+        <button
+            class="main-btn"
+            onclick="adminLogin()">
+
             Login
+
         </button>
 
         <p id="loginMessage"></p>
@@ -193,7 +168,7 @@
 </section>
 
 
-<!-- ================= ADMIN DASHBOARD ================= -->
+<!-- ADMIN DASHBOARD -->
 
 <section id="admin" class="page hidden">
 
@@ -212,32 +187,36 @@
 
     <div class="admin-box">
 
-        <h2>📿 Add Mantra</h2>
+        <h2>📿 Add New Mantra</h2>
 
         <input
-            type="text"
             id="newMantraName"
+            type="text"
             placeholder="Mantra name"
         >
 
         <textarea
             id="newMantraText"
-            placeholder="Write mantra text"
-        ></textarea>
+            placeholder="Write the Sanskrit mantra here">
+        </textarea>
 
         <textarea
             id="newMantraMeaning"
-            placeholder="Meaning / Notes"
-        ></textarea>
+            placeholder="Write meaning / notes here">
+        </textarea>
 
         <input
-            type="file"
             id="mantraAudio"
-            accept="audio/*"
+            type="text"
+            placeholder="Paste audio link here"
         >
 
-        <button class="main-btn" onclick="addMantra()">
+        <button
+            class="main-btn"
+            onclick="addMantra()">
+
             Add Mantra
+
         </button>
 
     </div>
@@ -250,46 +229,50 @@
         <h2>🎓 Add Online Class</h2>
 
         <input
-            type="text"
             id="classTitle"
+            type="text"
             placeholder="Class title"
         >
 
         <input
-            type="text"
             id="classDate"
+            type="text"
             placeholder="Class date"
         >
 
         <input
-            type="text"
             id="classLink"
-            placeholder="Online class link"
+            type="text"
+            placeholder="Class link"
         >
 
-        <button class="main-btn" onclick="addClass()">
+        <button
+            class="main-btn"
+            onclick="addClass()">
+
             Add Class
+
         </button>
 
     </div>
 
 
-    <!-- EXISTING MANTRAS -->
+    <!-- ADMIN MANTRAS -->
 
     <div class="admin-box">
 
-        <h2>📋 Current Mantras</h2>
+        <h2>📋 Mantras</h2>
 
         <div id="adminMantraList"></div>
 
     </div>
 
 
-    <!-- EXISTING CLASSES -->
+    <!-- ADMIN CLASSES -->
 
     <div class="admin-box">
 
-        <h2>🎓 Current Classes</h2>
+        <h2>🎓 Classes</h2>
 
         <div id="adminClassList"></div>
 
@@ -300,7 +283,9 @@
 
 <footer>
 
-    <p>© 2026 Sanskrit Vidya</p>
+    <p>
+        © 2026 Sanskrit Vidya
+    </p>
 
 </footer>
 
@@ -308,4 +293,5 @@
 <script src="3.js"></script>
 
 </body>
+
 </html>
